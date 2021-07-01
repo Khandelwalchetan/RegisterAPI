@@ -8,18 +8,18 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserServiceimp implements  UserService{
+public class RegisterServiceImpl implements  RegisterService{
     @Autowired
     private UserDao userDao;
-
-
-
-
     public void saveUser(User user) {
         userDao.save(user);
     }
 
-    public List<User> findAll(){
-        return userDao.findAll();
+    @Override
+    public boolean validEmail(String email) {
+        for(User user:userDao.findAll())
+            if(user.getEmail().equals(email))
+                return false;
+        return true;
     }
 }
