@@ -1,4 +1,4 @@
-package com.example.registerapi.Service;
+package com.example.registerapi.Service.Abstraction;
 
 import com.example.registerapi.entities.User;
 import org.springframework.stereotype.Service;
@@ -8,7 +8,8 @@ import java.util.List;
 
 
 
-public interface UserService {
+public interface RegisterService {
     public void saveUser(User user);
     public List<User> findAll();
+    public boolean validEmail(String email);
 }

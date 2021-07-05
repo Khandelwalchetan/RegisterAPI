@@ -1,5 +1,6 @@
 package com.example.registerapi.entities;
 
+import com.example.registerapi.Dto.RegisterDto;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -14,17 +15,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @NotBlank(message = "Name is mandatory")
-    @NotNull
+
     private String name;
 
-    @NotBlank(message = "Email is mandatory")
-    @NotNull
+
     private String email;
 
-    @NotBlank(message = "Password is mandatory")
-    @Size(min=10,message="Password must be of 10 digits")
-    //Doubt of using custom password validator
+
     private String password;
 
     public int getId() {
@@ -78,6 +75,12 @@ public class User {
         this.name = name;
         this.email = email;
         this.password = password;
+    }
+
+    public User(RegisterDto registerDto) {
+        this.name = registerDto.getName();
+        this.email = registerDto.getEmail();
+        this.password = registerDto.getPassword();
     }
 
 
